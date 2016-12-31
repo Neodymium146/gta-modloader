@@ -8,9 +8,9 @@ To compile the project, there are several dependencies that must be available in
 
 2.1) Boost:
 URL: http://www.boost.org
-Version: 1.59
+Version: 1.63
 
-- Download and unpack the library into lib\boost-1.59
+- Download and unpack the library into lib\boost-1.63
 
 2.2) Crypto++:
 URL: http://www.cryptopp.com
