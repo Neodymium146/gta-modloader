@@ -22,10 +22,10 @@ Version: 5.6.2
 - Compile the library as x64 Debug and x64 Release
 
 2.3) MHook:
-URL: http://codefromthe70s.org/mhook23.aspx
-Version: 2.3
+URL: http://codefromthe70s.org/mhook24.aspx
+Version: 2.4
 
-- Download unpack the library into lib\mhook-2.3
+- Download unpack the library into lib\mhook-2.4
 - In project configuration: Change output from exe to lib
 - In project configuration: Do not use precompiled header
 - Compile the library as x64 Debug and x64 Release
