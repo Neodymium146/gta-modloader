@@ -741,20 +741,19 @@ void virtualization_initialize(LPCTSTR lpFileName)
 	else
 	{
 		log_write("key file not found -> create");
-
-		int theLENN = 0x01D00000;
-		unsigned char *mybuf = new unsigned char[theLENN];
+		int searchLength = 0x02000000;
+		unsigned char *mybuf = new unsigned char[searchLength];
 		size_t bytesRead;
 		DWORD oldProtect;
 
 		HANDLE      processHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-		VirtualProtectEx(processHandle, (LPVOID)mainmodptr, theLENN, PAGE_EXECUTE_READWRITE, &oldProtect);
-		ReadProcessMemory(processHandle, (LPCVOID)mainmodptr, mybuf, theLENN, &bytesRead);
+		VirtualProtectEx(processHandle, (LPVOID)mainmodptr, searchLength, PAGE_EXECUTE_READWRITE, &oldProtect);
+		ReadProcessMemory(processHandle, (LPCVOID)mainmodptr, mybuf, searchLength, &bytesRead);
 
-		bool b1 = find_hash((byte *)mybuf, theLENN, (const char *)PC_AES_KEY_HASH, &aesKeyAddress, 0x20);
-		bool b2 = find_hashes((byte *)mybuf, theLENN, (const char *)PC_NG_KEY_HASHES, 20, 101, ngKeyAddresses.data(), 0x110);
-		bool b3 = find_hashes((byte *)mybuf, theLENN, (const char *)PC_NG_DECRYPT_TABLE_HASHES, 20, 272, ngTableAddresses.data(), 0x400);
-		bool b4 = find_hash((byte *)mybuf, theLENN, (const char *)PC_LUT_HASH, &lutAddress, 0x100);
+		bool b1 = find_hash((byte *)mybuf, searchLength, (const char *)PC_AES_KEY_HASH, &aesKeyAddress, 0x20);
+		bool b2 = find_hashes((byte *)mybuf, searchLength, (const char *)PC_NG_KEY_HASHES, 20, 101, ngKeyAddresses.data(), 0x110);
+		bool b3 = find_hashes((byte *)mybuf, searchLength, (const char *)PC_NG_DECRYPT_TABLE_HASHES, 20, 272, ngTableAddresses.data(), 0x400);
+		bool b4 = find_hash((byte *)mybuf, searchLength, (const char *)PC_LUT_HASH, &lutAddress, 0x100);
 
 		ofstream datOutFile{ datFileName,ofstream::binary };
 		datOutFile.write((char *)&aesKeyAddress, 4);
