@@ -14,21 +14,21 @@ Version: 1.59
 
 2.2) Crypto++:
 URL: http://www.cryptopp.com
-Version: 5.6.2
+Version: 5.6.5
 
-- Download an unpack the library into lib\cryptocpp-5.6
-- In crpylib project configuration: change runtime library from Multithreaded-Debug to Multithreaded-Debug-DLL in debug mode
-- In crpylib project configuration: change runtime library from Multithreaded to Multithreaded-DLL in release mode mode
-- Compile the library as x64 Debug and x64 Release
+- Download an unpack the library into lib\cryptocpp-5.6.5
+- In crpylib project debug configuration: change runtime library from Multithreaded-Debug to Multithreaded-Debug-DLL
+- In crpylib project release configuration: change runtime library from Multithreaded to Multithreaded-DLL
+- Compile the library as Debug-x64 and Release-x64
 
 2.3) MHook:
 URL: http://codefromthe70s.org/mhook24.aspx
 Version: 2.4
 
 - Download unpack the library into lib\mhook-2.4
-- In project configuration: Change output from exe to lib
-- In project configuration: Do not use precompiled header
-- Compile the library as x64 Debug and x64 Release
+- In project all configurations: Change output from exe to lib
+- In project all configurations: Do not use precompiled header
+- Compile the library as Debug-x64 and Release-x64
 
 3) How to use:
 - Copy ModLoader.asi into your GTAV folder.
